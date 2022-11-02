@@ -1,4 +1,4 @@
-const result = document.getElementById("result");
+
 
 function compute()
 {
@@ -15,16 +15,32 @@ function compute()
 
 function updateRate(rate_val) {
     let rateVal = document.getElementById("rate").value; 
-    document.getElementById("rate_val").innerHTML= `${rateVal.toFixed(2)}%`;
+    document.getElementById("rate_val").innerHTML= `${rateVal}%`;
 }
-
 
 btn.addEventListener('click', compute, false);
 
-result.innerHTML = `<div>If you deposit $<span>${principal.toFixed(2)}</span></div>
+/*result.addEventListener('click', updateResult, false)
+
+function updateResult(result) {
+    result.document.getElementById("result").innerHTML = `<div>If you deposit $<span>${principal.toFixed(2)}</span></div>
 <div>at an interest rate of <span>${rate.toFixed(2)}%,</span><div>
 <div>you will receive an amount of $<span>${interest}</span></div>
-<div>in the year <span>${year}.`;
+<div>in the year <span>${year}</span>.</div>`;
+}
+*/
+
+document.getElementById("result").innerHTML =
+    "If you deposit <mark>" +
+    principal +
+    ",</mark><br>at an interest rate of <mark>" +
+    rate +
+    "%,</mark><br>You will receive an amount of <mark>" +
+    interest +
+    ",</mark><br>in the year <mark>" +
+    year +
+    "</mark><br>";
+
 
   
     

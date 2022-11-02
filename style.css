@@ -35,13 +35,17 @@ html {
     padding: 0;
 }
 
+input, select  {
+    cursor: pointer;
+}
+
 label {
     display: inline-block;
     width: 40%;
     margin: 0;
     padding: 0;
     font-weight: 600;
-    border: 1px solid green;
+    border: px solid green;
 }
 
 legend {
@@ -60,7 +64,7 @@ span {
     margin: 0;
     padding-left: 0.5rem ;
     text-align: start;
-    border: 1px solid purple;
+    border: px solid purple;
 }
 
 
@@ -74,13 +78,16 @@ span {
     border-radius: 10px;
     border: 1px solid gray;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #interest {
     display: inline-block;
-    width: 50%;
+    width: 36%;
     margin-top: 0.5rem;
     padding: 0;
+    border: 1px solid gray;
+    border-radius: 3px;
     
 }
 
@@ -90,12 +97,13 @@ span {
     padding: 0.2rem 0;
     margin-top: 0.5rem 1rem 0.5rem auto;
     text-align: end;
-    
-    border: 1px solid blue;
+    border: 1px solid gray;
+    border-radius: 3px;
 }
 
 #rate {
     padding-bottom: 0;
+    border: none;
 }
 
 #result {
@@ -107,12 +115,16 @@ span {
     border: 3px solid yellow;
 }
 
+#years {
+    margin-top: 0.5rem;
+}
+
 /*-----------------------CLASSES---------------------------------*/
 
 .formField {
     margin: 0;
     padding: 0;
-    border: 1px solid red;
+    border: px solid red;
 }
 
 .maindiv {
