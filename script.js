@@ -1,22 +1,30 @@
+const result = document.getElementById("result");
+
 function compute()
 {
-    let principal = document.getElementById("principal").value;
-    let rate = document.getElementById("rate").value;
-    let years = document.getElementById("years").value;
+    const principal = document.getElementById("principal").value;
+    const rate = document.getElementById("rate").value;
+    const years = document.getElementById("years").value;
+    
     let interest = principal * years * rate /100;
-    let year = new Date().getFullYear()+parseInt(years);
+        document.getElementById("interest").innerHTML = "$"+interest.toFixed(2);
 
-    document.getElementById("interest").innerHTML = "$"+interest;
-    document.getElementById("result").innerHTML= "If you deposit "+principal+","<br>"at an interest rate of "+rate+"%" <br>"You will receive an amount of "+amount+"," <br> + "in the year "+year+".";
+    let year = new Date().getFullYear()+parseInt(years);
     
 }
 
 function updateRate(rate_val) {
     let rateVal = document.getElementById("rate").value; 
-    document.getElementById("rate_val").innerHTML= rateVal+"%";
+    document.getElementById("rate_val").innerHTML= `${rateVal.toFixed(2)}%`;
 }
 
 
+btn.addEventListener('click', compute, false);
+
+result.innerHTML = `<div>If you deposit $<span>${principal.toFixed(2)}</span></div>
+<div>at an interest rate of <span>${rate.toFixed(2)}%,</span><div>
+<div>you will receive an amount of $<span>${interest}</span></div>
+<div>in the year <span>${year}.`;
 
   
     
