@@ -2,7 +2,7 @@
 <html>
     <head>
     <title>Web App - Simple Interest Calculator</title>
-    <script src="script.js"></script>
+    <script src="head.js"></script>
     <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -14,7 +14,7 @@
                 <legend>Simple Interest Calculator</legend>
                     <div class="formField">
                         <label for="amount">Amount</label> 
-                            <input type="number"  id="principal" min="1" max="1000000000" step="1" required></div>  
+                            <input type="number"  id="principal" min="100" max="1000000000" step="100" required></div>  
             
                     <!--Must use oninput instead of onchange here because onchange won't trigger the slider's value changes in the Chrome Browser-->
                     
@@ -49,13 +49,13 @@
                     <label for="compute">
                         <button type="button" id="btn" onclick="compute()"> Compute Interest </button>
                     </label>
-                    <span id="result" class="formField">Click compute interest to see your results!</span>
+                    <p id="result" class="formField">Click 'Compute Interest' to see your results!</p>
                 </div>
  
         </fieldset>
     </form>
     <footer>&#169; This Calculator belongs to Veronica Johnson</footer>
     </div>
-    
+    <script src="body.js"></script>
     </body>
 </html>
