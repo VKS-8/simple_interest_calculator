@@ -16,7 +16,7 @@
                 <legend>Simple Interest Calculator</legend>
                     <div class="formField">
                         <label for="amount">Amount</label> 
-                            <input type="number" name="principal"  id="principal" class="resultStr" min="1" max="1000000000" step="1" value="100" required></div>  
+                            <input type="number" name="principal"  id="principal" class="resultStr"  min="1" max="1000000000" step="1" value="100" required></div>  
             
                     <!--Must use oninput instead of onchange here because onchange won't trigger the slider's value changes in the Chrome Browser-->
                     
@@ -51,12 +51,12 @@
                     <label for="compute">
                         <button type="submit" name="button"  id="btn" onclick="compute()" onclick="onSubmit()"> Compute Interest </button>
                     </label>
-                    <p name="result"  id="result" class="formField">Click 'Compute Interest' to see your results!</p>
+                    <p name="result"  id="result" class="formField displayResult">Click 'Compute Interest' to see your results!</p>
                 </div>
  
         </fieldset>
     </form>
-    <footer>&#169; Everybody gets rich</footer>
+    <footer>&#169; Everybody Can Get Rich</footer>
     </div>
     <script src="body.js"></script>
     </body>

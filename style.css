@@ -25,11 +25,12 @@ fieldset {
 footer {
     display: block;
     margin: 0 auto;
-    padding-top: 0.5rem;
+    padding: 0.5rem 0 0 1rem;
         
 } 
     
 h1{
+    width: 100%;
     color:grey;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
@@ -42,7 +43,8 @@ label {
     margin: 0;
     padding: 0;
     font-weight: 600;
-    border: 1px solid green;
+    
+    border: px solid green;
 }
 
 legend {
@@ -61,7 +63,8 @@ span {
     margin: 0;
     padding-left: 0.5rem ;
     text-align: start;
-    border: 1px solid purple;
+    
+    border: px solid purple;
 }
 
 
@@ -74,6 +77,7 @@ span {
     padding: 0.5rem 0;
     border-radius: 5px;
     border: 1px solid gray;
+    background-color: rgb(183, 182, 182);
     font-weight: 600;
 }
 
@@ -92,14 +96,17 @@ span {
     margin: 0.5rem 1rem 0 auto;
     text-align: end;
     font-size: medium;
+    border-radius: 5px;
     
-    border: 1px solid blue;
+    border: px solid blue;
 }
 
 #principal {
     width: 40%;
     margin: 0;
     padding: 0 0.5rem 0 auto;
+    
+    border: px solid orange;
 }
 
 #rate {
@@ -109,10 +116,12 @@ span {
 #result {
     display: inline-block;
     width: 100%;
-    height: 5rem;
+    height: 0;
     margin-top: 0;
     padding: 0.25rem 0;
-    border: 3px solid yellow;
+    
+    border: px solid yellow;
+    
 }
 
 #years {
@@ -124,7 +133,8 @@ span {
 .formField {
     margin: 0;
     padding: 0;
-    border: 1px solid red;
+    
+    border: px solid red;
 }
 
 .maindiv {

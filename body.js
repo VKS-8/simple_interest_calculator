@@ -2,6 +2,7 @@ const getForm = document.querySelector('#form');
 const getPrincipal = document.querySelector('#principal');
     console.log(getPrincipal);
 const getRate = document.querySelector('#rate');
+    console.log(getRate);
 const getYears = document.querySelector('#years');
 const getRate_val = document.querySelector('#rate_val');
 const getInterest = document.querySelector('#interest');
@@ -15,6 +16,18 @@ const resultStr =
     in the year <span class="resultStr"><mark>${getYears.value}</mark></span>. \<b\>` 
     ;
 
+getPrincipal.addEventListener('blur', check);
+
+function check(e) {
+    //e.preventDefault();
+
+    //if (getPrincipal === null || getPrincipal <= 0) {
+
+    alert('Please enter a positive number that is greater than zero.');
+    //return false;
+    //}
+    
+}
 
 getForm.addEventListener('submit', onSubmit);
 
@@ -27,8 +40,8 @@ function onSubmit(e) {
 
     result.innerHTML = resultStr;
 
-    setTimeout(() => result.remove(), 5000);
-    
+    setTimeout(() => result.innerHTML = '', 5000);
+  
     }
     
     
