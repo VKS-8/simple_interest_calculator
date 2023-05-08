@@ -1,5 +1,9 @@
 const getForm = document.querySelector('#form'); 
 let result = document.querySelector('#result');
+// When outside the main(), it will display the result but with interest
+// undefined.
+// When inside the main(), it console logs correct interest value but
+// won't display the result text
 getForm.addEventListener('submit', onSubmit);
 
 function main() {
