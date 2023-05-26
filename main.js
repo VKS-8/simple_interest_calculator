@@ -1,17 +1,4 @@
-const log = console.log();
-
-
 const getForm = document.querySelector('#form'); 
-// const getPrincipal = document.querySelector('#principal');
-//     log(getPrincipal);
-// const getRate = document.querySelector('#rate');
-//     log(getRate);
-// const getYears = document.querySelector('#years');
-//     log(getYears);
-// const getRate_val = document.querySelector('#rate_val');
-//     log(getRate_val);
-// const getInterest = document.querySelector('#interest');
-//     log(getInterest);
 const getMessage = document.querySelector('.msg');
 const displayResults = document.querySelector('#result');
 
@@ -22,10 +9,6 @@ getForm.addEventListener('submit', onSubmit);
 function onSubmit(e) {
     e.preventDefault();
 
-    // if (getPrincipal === '') {
-    //     alert("Please enter an amount.");
-    // }
-    
     result.innerHTML = resultStr;
     
     setTimeout(() => result.innerHTML = '', 5000);
@@ -45,7 +28,7 @@ function compute()
     resultStr = 
     `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
     at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
-    you will receive an amount of $<span class="resultStr"><mark>${interest}</mark></span> \<br\>
+    you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
     in the year <span class="resultStr"><mark>${years}</mark></span>. \<b\>` 
     ;
 }
