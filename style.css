@@ -140,7 +140,7 @@ span {
 .maindiv {
     background-color: white;
     color: black;
-    width: 500px;
+    width: 500px; /* 500px matches the image; 300 px does not */
     height: 50%;
     padding: 20px;
     border-radius: 25px;

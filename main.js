@@ -46,8 +46,7 @@ function compute()
 
 // Gets new value from the range slider and updates the number in the #rate_val span,
 // underscore in front of _rate_val because it isn't read
-function updateRate(_rate_val) {
+function updateRate() {
     let rateVal = document.getElementById('rate').value; 
-    document.getElementById('rate_val').innerHTML= `${rateVal}%`; 
-    return rateVal;
+    document.getElementById('rate_val').innerHTML= `${rateVal}%`;
 }
