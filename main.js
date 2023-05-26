@@ -1,3 +1,7 @@
+// TODO - add correct alerts per rubric
+// TODO - add comments
+/* Note about fix - we did move the resultStr back into the compute function where it is assigned, and declared but did not define a global let resultStr variable -- The "we" = my son, who is currently my "rubber duck" that I talk things through with, and who continues to help me with my debugging skills. */
+
 const getForm = document.querySelector('#form'); 
 const getMessage = document.querySelector('.msg');
 const displayResults = document.querySelector('#result');
@@ -30,6 +34,7 @@ function compute()
     at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
     you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
     in the year <span class="resultStr"><mark>${years}</mark></span>. \<b\>` 
+    // TODO-add the year parsed from current year here instead of the number of years chosen in the select drop down
     ;
 }
 
