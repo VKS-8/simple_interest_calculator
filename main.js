@@ -10,6 +10,12 @@ let resultStr;
 
 getForm.addEventListener('submit', onSubmit);
 
+function main() {
+  updateRate();
+  compute();
+  onSubmit();
+}
+
 function onSubmit(e) {
     e.preventDefault();
 
