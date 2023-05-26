@@ -35,11 +35,13 @@ function compute()
     let interest = principal * years * rate /100;
         document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
 
+    let year = new Date().getFullYear() + parseInt(years);
+
     resultStr = 
     `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
     at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
     you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
-    in the year <span class="resultStr"><mark>${years}</mark></span>. \<b\>` 
+    in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>` 
     // TODO-add the year parsed from current year here instead of the number of years chosen in the select drop down
     ;
 }
