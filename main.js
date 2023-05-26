@@ -41,9 +41,7 @@ function compute()
     `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
     at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
     you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
-    in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>` 
-    // TODO-add the year parsed from current year here instead of the number of years chosen in the select drop down
-    ;
+    in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>`;
 }
 
 // Gets new value from the range slider and updates the number in the #rate_val span,
