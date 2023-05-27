@@ -19,14 +19,11 @@ function main() {
 function onSubmit(e) {
     const principal = document.querySelector('#principal').value;
 
-        if(principal !== '') {
-            return;
-        } else {
+        if(principal === '') {
             e.preventDefault();
             alert('Enter a positive number.');
         }
     
-
     result.innerHTML = resultStr;
     
     setTimeout(() => result.innerHTML = '', 5000);
