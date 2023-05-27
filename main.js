@@ -13,7 +13,7 @@ function main() {
     const principal = document.querySelector('#principal').value;
             console.log(typeof(principal.value));
         if(principal.checkValidity() === '') {
-            console.log('Check entry');
+            log('Check entry');
             alert('Enter a positive number.');
             e.preventDefault();
         } else {
