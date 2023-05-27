@@ -1,38 +1,39 @@
+const log = console.log();
 // TODO - add correct alerts per rubric
 // TODO - add comments
-/* Note about fix - we did move the resultStr back into the compute function where it is assigned, and declared but did not define a global let resultStr variable -- The "we" = my son, who is currently my "rubber duck" that I talk things through with, and who continues to help me with my debugging skills. */
 
-const getForm = document.querySelector('#form'); 
-const getMessage = document.querySelector('.msg');
-const displayResults = document.querySelector('#result');
+// let resultStr;
 
-let resultStr;
-
-getForm.addEventListener('submit', onSubmit);
+const getForm = document.querySelector('#form');
+const buttonSubmit = document.querySelector('#btn');
 
 function main() {
-  updateRate();
-  compute();
-  onSubmit();
+  
+    buttonSubmit.addEventListener('submit', (e) => {
+    const principal = document.querySelector('#principal').value;
+            console.log(typeof(principal.value));
+        if(principal.checkValidity() === '') {
+            console.log('Check entry');
+            alert('Enter a positive number.');
+            e.preventDefault();
+        } else {
+            compute();
+        }
+    }); 
+
+    updateRate();
 }
 
-function onSubmit(e) {
-    const principal = document.querySelector('#principal').value;
-
-        if(principal === '') {
-            e.preventDefault();
-            alert('Enter a positive number.');
-        }
-    
-    result.innerHTML = resultStr;
-    
-    setTimeout(() => result.innerHTML = '', 5000);
-  
-    }
+// Gets new value from the range slider and updates the number in the #rate_val span,
+function updateRate() {
+    let rateVal = document.getElementById('rate').value; 
+    document.getElementById('rate_val').innerHTML= `${rateVal}%`;
+}
 
 // Computes the interest, changes the value in the 'Interest' output field, 
 function compute()
 {
+    console.log('compute() entry');
     const principal = document.getElementById('principal').value;
     const rate = document.getElementById('rate').value;
     const years = document.getElementById('years').value;
@@ -42,16 +43,17 @@ function compute()
 
     let year = new Date().getFullYear() + parseInt(years);
 
-    resultStr = 
+    let displayResults = document.querySelector('#result');
+
+    let resultStr = 
     `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
     at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
     you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
     in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>`;
+    
+    displayResults.innerHTML = resultStr;
+       
+    setTimeout(() => result.innerHTML = '', 5000);
 }
 
-// Gets new value from the range slider and updates the number in the #rate_val span,
-// underscore in front of _rate_val because it isn't read
-function updateRate() {
-    let rateVal = document.getElementById('rate').value; 
-    document.getElementById('rate_val').innerHTML= `${rateVal}%`;
-}
+main()
