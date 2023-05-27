@@ -17,7 +17,15 @@ function main() {
 }
 
 function onSubmit(e) {
-    e.preventDefault();
+    const principal = document.querySelector('#principal').value;
+
+        if(principal !== '') {
+            return;
+        } else {
+            e.preventDefault();
+            alert('Enter a positive number.');
+        }
+    
 
     result.innerHTML = resultStr;
     

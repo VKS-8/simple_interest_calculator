@@ -24,8 +24,9 @@
                     
                     <div class="formField">
                         <label for="interestRate">Interest Rate</label>  
-                        <input type="range" name="rate" id="rate" class="resultStr" min="1" max="20" step="0.25" value="10.25" oninput="updateRate(this.value)"><span id="rate_val">
-                    10.25%</span>
+                        <input type="range" name="rate" id="rate" class="resultStr" min="1" max="20" step="0.25" value="10.25" oninput="updateRate(this.value)">
+                        <span id="rate_val">
+                        10.25%</span>
                     </div>  
 
                     <div class="formField">
@@ -51,9 +52,9 @@
 
                 <div>
                     <label for="compute">
-                        <button type="submit" name="button"  id="btn" onclick="compute()" onclick="onSubmit()"> Compute Interest </button>
+                        <button type="button" name="submit"  id="btn" onclick="compute()" onclick="onSubmit()"> Compute Interest </button>
                     </label>
-                    <p name="result"  id="result" class="formField displayResult">Click 'Compute Interest' to see your results!</p>
+                    <span name="result"  id="result" class="formField displayResult">Click 'Compute Interest' to see your results!</span>
                 </div>
  
         </fieldset>
