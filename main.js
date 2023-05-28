@@ -1,9 +1,6 @@
-const log = console.log();
-// TODO - add correct alerts per rubric
 // TODO - add comments
 
-// let resultStr;
-
+// Get input values from HTML
 const getForm = document.querySelector('#form');
  console.log('Var getForm: ' + getForm);
 const inputField = document.querySelector('input');
@@ -13,34 +10,12 @@ const submitBtn = document.querySelector('#btn');
 
 let displayResults = document.querySelector('#result');
  console.log('Var displayResults: ' + displayResults);
+
+// Declare variable to set the results to for display
 let resultStr;
  console.log('Var resultStr: ' + resultStr);
 
-function main() {
-    console.log('main() entry');
-    updateRate();
-    console.log('updateRate() ran');
-    
-// Solution sourced for this Free Code Camp blog article:
-// https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
-    inputField.addEventListener('input', () => {
-        console.log('validation() entry');
-        inputField.setCustomValidity('');
-        console.log('customValidity set to empty');
-        inputField.checkValidity();
-        console.log('checkValidity() ran');       
-    });
-
-    inputField.addEventListener('invalid', () => {
-        inputField.setCustomValidity(alert('Enter a positive number.'));
-        console.log('validity alert ran');
-    });
-
-    compute();
-    console.log('compute() ran');
-    results();
-    console.log('results() ran');
-}
+submitBtn.addEventListener('click', validation);
 
 // Gets new value from the range slider and updates the number in the #rate_val span,
 function updateRate() {
@@ -60,29 +35,66 @@ function compute(){
     console.log('Var rate: ' + rate);
     const years = document.getElementById('years').value;
     console.log('Var years: ' + years);
+
+    // validation();
+    // console.log('validation() ran');
+
     let interest = principal * years * rate /100;
         document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
         console.log('Var interest: ' + interest);
     let year = new Date().getFullYear() + parseInt(years);
-    console.log('Var year: ' + year);
+        console.log('Var year: ' + year);
 
     resultStr = 
-   
-    `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
-    at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
-    you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
-    in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>`;  
-    console.log('Var resultStr: ' + resultStr);
+        `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
+        at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
+        you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
+        in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>`;  
+            console.log('Var resultStr: ' + resultStr);
+    results();
+    console.log('results() ran');
 }
 
+// Validate input
+function validation() {
+    console.log('validation() entry');
+    let principalInput = document.getElementById('principal');      
+    // Solution sourced for this Free Code Camp blog article:
+    // https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
+    // and repurposed to meet current coding needs
+    principalInput.addEventListener('input', () => {
+        console.log('validation() entry');
+        // Set custom alert to empty
+        principalInput.setCustomValidity('');
+        console.log('customValidity set to empty');
+        // Check validity of input field for principal
+        principalInput.checkValidity();
+        console.log('checkValidity() ran');       
+    });
+
+    // Listen for validity of principal input field
+    // Run alert if invalid
+    // Prevent default form submission
+    principalInput.addEventListener('invalid', (e) => {
+        if(!principalInput === '' || !principalInput === null || !principalInput === undefined || !principalInput === NaN) {
+            return;
+        } else {
+        principalInput.setCustomValidity(alert('Enter a positive number.'));
+        console.log('validity alert ran');
+        e.preventDefault();
+        }
+    });
+    compute();
+}
+
+// Display results
 function results() {
     console.log('results() entry');
-displayResults.innerHTML = resultStr;
-console.log(displayResults.innerHTML = resultStr);
-       
-setTimeout(() => displayResults.innerHTML = '', 5000);
-console.log('setTimeout complete');
-}
+    // Set results to display in #result span
+    displayResults.innerHTML = resultStr;
+    console.log(displayResults.innerHTML = resultStr);
 
-main();
-console.log('main() ran');
+    // reset #result span to empty after 5 secs
+    setTimeout(() => displayResults.innerHTML = '', 5000);
+    console.log('setTimeout complete');
+}
