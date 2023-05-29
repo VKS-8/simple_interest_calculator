@@ -78,7 +78,7 @@ function validation() {
         console.log('validation() handler entry');
         // Clear all previous messages
         principalInput.setCustomValidity('');
-        console.log('customValidity set to empty');
+        console.log('resets customValidity to empty');
         // Check validity of input field for principal
         principalInput.checkValidity();
         console.log('checkValidity() ran');       
@@ -88,13 +88,13 @@ function validation() {
     // Run alert if invalid
     // Prevent default form submission
     console.log('Invalid Check entry');
-    principalInput.addEventListener('invalid', () => {
+    principalInput.addEventListener('invalid', (e) => {
         if(!principalInput === '' || !principalInput === null || !principalInput === undefined || !principalInput === NaN || !principalInput <= 0) {
             console.log('valid');
             return;
         } else {
             console.log('invalid')
-            // e.preventDefault();
+            e.preventDefault();
             principalInput.setCustomValidity(alert('Enter a positive number.'));
             console.log('validity alert ran');
         }
@@ -108,7 +108,7 @@ function results() {
     console.log('results() entry');
     // Set results to display in #result span
     displayResults.innerHTML = resultStr;
-    console.log(displayResults.innerHTML = resultStr);
+    console.log(displayResults.textContent = resultStr);
 
     // reset #result span to empty after 5 secs
     setTimeout(() => displayResults.innerHTML = '', 5000);
