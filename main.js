@@ -15,7 +15,19 @@ let displayResults = document.querySelector('#result');
 let resultStr;
  console.log('Var resultStr: ' + resultStr);
 
-submitBtn.addEventListener('click', validation);
+submitBtn.addEventListener('click', compute);
+getForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    if (inputField.checkValidity()) {
+        compute();
+        form.reset(); // Reset the form
+      } else {
+        inputField.setCustomValidity('Enter a positive number.');
+        inputField.reportValidity();
+        inputField.setCustomValidity('');
+      }
+  });
 
 // Gets new value from the range slider and updates the number in the #rate_val span,
 function updateRate() {
@@ -27,7 +39,7 @@ function updateRate() {
 }
 
 // Computes the interest, changes the value in the 'Interest' output field, 
-function compute(){     
+function compute() {     
     console.log('compute() entry');
     const principal = document.getElementById('principal').value;
     console.log('Var principal: ' + principal);
@@ -36,8 +48,8 @@ function compute(){
     const years = document.getElementById('years').value;
     console.log('Var years: ' + years);
 
-    // validation();
-    // console.log('validation() ran');
+    validation();     
+    console.log('validation() ran');
 
     let interest = principal * years * rate /100;
         document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
@@ -63,8 +75,8 @@ function validation() {
     // https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
     // and repurposed to meet current coding needs
     principalInput.addEventListener('input', () => {
-        console.log('validation() entry');
-        // Set custom alert to empty
+        console.log('validation() handler entry');
+        // Clear all previous messages
         principalInput.setCustomValidity('');
         console.log('customValidity set to empty');
         // Check validity of input field for principal
@@ -75,16 +87,20 @@ function validation() {
     // Listen for validity of principal input field
     // Run alert if invalid
     // Prevent default form submission
-    principalInput.addEventListener('invalid', (e) => {
-        if(!principalInput === '' || !principalInput === null || !principalInput === undefined || !principalInput === NaN) {
+    console.log('Invalid Check entry');
+    principalInput.addEventListener('invalid', () => {
+        if(!principalInput === '' || !principalInput === null || !principalInput === undefined || !principalInput === NaN || !principalInput <= 0) {
+            console.log('valid');
             return;
         } else {
-        principalInput.setCustomValidity(alert('Enter a positive number.'));
-        console.log('validity alert ran');
-        e.preventDefault();
+            console.log('invalid')
+            // e.preventDefault();
+            principalInput.setCustomValidity(alert('Enter a positive number.'));
+            console.log('validity alert ran');
         }
+        console.log('Invalid Check ran');
+        return;
     });
-    compute();
 }
 
 // Display results
