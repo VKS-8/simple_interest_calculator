@@ -34,9 +34,8 @@ function updateRate() {
 }
 
 // Computes the interest, changes the value in the 'Interest' output field, 
-function compute(e) {   
-    // console.log('compute() entry');
-    e.preventDefault(); 
+function compute() {   
+    
     // console.log(e);
     const principal = document.getElementById('principal').value;
     // console.log('Var principal: ' + principal);
@@ -74,11 +73,11 @@ function validation() {
     // Solution sourced for this Free Code Camp blog article:
     // https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
     // and repurposed to meet current coding needs
-    principalInput.addEventListener('input', () => {
+    principalInput.addEventListener('submit', () => {
         console.log('validation() handler entry');
        
-        // // Clear all previous messages
-        // principalInput.setCustomValidity('');
+        // Clear all previous messages
+        principalInput.setCustomValidity('');
         // console.log('resets customValidity to empty');
         // Check validity of input field for principal
         principalInput.checkValidity();
@@ -91,11 +90,11 @@ function validation() {
     // Prevent default form submission
     console.log('Invalid Check entry');
     principalInput.addEventListener('invalid', () => {
-            console.log('invalid') 
-        
-        principalInput.setCustomValidity(alert('Enter a positive number.'));
-            console.log('validity alert ran');
-          
+                if (principalInput === '') {
+                console.log('invalid') 
+                principalInput.setCustomValidity(alert('Enter a positive number.'));
+                console.log('validity alert ran');
+            }
         }),
         console.log('Invalid Check ran');   
 }
