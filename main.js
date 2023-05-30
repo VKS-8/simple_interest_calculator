@@ -57,7 +57,6 @@ function compute(e) {
     // getForm.reset(); // Resets the form; but doesn't reset the range slider
     setTimeout(() => getForm.reset(), 5000);
     setTimeout(() => resetRangeSlider(), 5000);
-    
 }
  
 // Validate input
@@ -74,6 +73,7 @@ function validation() {
         console.log('resets customValidity to empty');
         // Check validity of input field for principal
         principalInput.checkValidity();
+        console.log(principalInput.checkValidity());
         console.log('checkValidity() ran');       
     });
 
@@ -81,13 +81,26 @@ function validation() {
     // Run alert if invalid
     // Prevent default form submission
     console.log('Invalid Check entry');
-    principalInput.addEventListener('invalid', (e) => {
+    principalInput.addEventListener('invalid', () => {
             console.log('invalid')
-            principalInput.setCustomValidity(alert('Enter a positive number.'));
+        principalInput.setCustomValidity(alert('Enter a positive number.'));
             console.log('validity alert ran');
         }),
         console.log('Invalid Check ran');   
 }
+
+
+const nameField = document.querySelector("input");
+
+nameField.addEventListener("input", () => {
+  nameField.setCustomValidity("");
+  nameField.checkValidity();
+  console.log(nameField.checkValidity());
+});
+
+nameField.addEventListener("invalid", () => {
+  nameField.setCustomValidity("Please fill in your First Name.");
+});
 
 // Display results
 function results() {
