@@ -96,14 +96,16 @@ function results() {
     displayResults.innerHTML = resultStr;
     console.log(displayResults.innerHTML = resultStr);
 
-    // reset #result span to empty after 5 secs
+    // Reset #result span to empty after 5 secs
     setTimeout(() => displayResults.innerHTML = '', 5000);
     console.log('setTimeout complete');
+    // Reset range slider text value to original value
+    setTimeout(() => document.querySelector('#rate_val').innerHTML = '10.25%', 5000);
 }
-
+// Reset range slider to original position
 function resetRangeSlider() {
     document.querySelector('#btn').addEventListener('click', ()=> {
-    document.querySelector('#rate').value = 10.25;
-    document.querySelector('#rate_val').innerHTML = '10.25%';
+    setTimeout(() => document.querySelector('#rate').value = 10.25, 5000);
+    // document.querySelector('#rate_val').innerHTML = '10.25%';  For some reason this doesn't work here but it does in the results() function
     });
 }
