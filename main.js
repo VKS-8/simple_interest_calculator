@@ -16,18 +16,6 @@ let resultStr;
  console.log('Var resultStr: ' + resultStr);
 
 submitBtn.addEventListener('click', compute);
-getForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-    
-    if (inputField.checkValidity()) {
-        compute();
-        form.reset(); // Reset the form
-      } else {
-        inputField.setCustomValidity('Enter a positive number.');
-        inputField.reportValidity();
-        inputField.setCustomValidity('');
-      }
-  });
 
 // Gets new value from the range slider and updates the number in the #rate_val span,
 function updateRate() {
@@ -39,7 +27,8 @@ function updateRate() {
 }
 
 // Computes the interest, changes the value in the 'Interest' output field, 
-function compute() {     
+function compute(e) {   
+    e.preventDefault();  
     console.log('compute() entry');
     const principal = document.getElementById('principal').value;
     console.log('Var principal: ' + principal);
@@ -65,8 +54,12 @@ function compute() {
             console.log('Var resultStr: ' + resultStr);
     results();
     console.log('results() ran');
+    // getForm.reset(); // Resets the form; but doesn't reset the range slider
+    setTimeout(() => getForm.reset(), 5000);
+    setTimeout(() => resetRangeSlider(), 5000);
+    
 }
-
+ 
 // Validate input
 function validation() {
     console.log('validation() entry');
@@ -89,18 +82,11 @@ function validation() {
     // Prevent default form submission
     console.log('Invalid Check entry');
     principalInput.addEventListener('invalid', (e) => {
-        if(!principalInput === '' || !principalInput === null || !principalInput === undefined || !principalInput === NaN || !principalInput <= 0) {
-            console.log('valid');
-            return;
-        } else {
             console.log('invalid')
-            e.preventDefault();
             principalInput.setCustomValidity(alert('Enter a positive number.'));
             console.log('validity alert ran');
-        }
-        console.log('Invalid Check ran');
-        return;
-    });
+        }),
+        console.log('Invalid Check ran');   
 }
 
 // Display results
@@ -108,9 +94,16 @@ function results() {
     console.log('results() entry');
     // Set results to display in #result span
     displayResults.innerHTML = resultStr;
-    console.log(displayResults.textContent = resultStr);
+    console.log(displayResults.innerHTML = resultStr);
 
     // reset #result span to empty after 5 secs
     setTimeout(() => displayResults.innerHTML = '', 5000);
     console.log('setTimeout complete');
+}
+
+function resetRangeSlider() {
+    document.querySelector('#btn').addEventListener('click', ()=> {
+    document.querySelector('#rate').value = 10.25;
+    document.querySelector('#rate_val').innerHTML = '10.25%';
+    });
 }
