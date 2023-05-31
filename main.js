@@ -75,7 +75,7 @@ function compute() {
 
 // Validate principal input; stops submit if invalid
 function validation(principal) {
- if (principal == '' || principal <=0 ) {
+ if (principal == '' || principal <=0 || principal > 1000000000) {
  alert('Enter a positive number');
   isValid = false;
   return false;
@@ -95,6 +95,7 @@ function results() {
  // Reset range slider text value to original value
  setTimeout(() => document.querySelector('#rate_val').innerHTML = '10.25%', 5000);
 }
+
 // Reset range slider to original position
 function resetRangeSlider() {
  document.querySelector('#btn').addEventListener('click', ()=> {
@@ -104,5 +105,8 @@ function resetRangeSlider() {
 
 // Set focus on prinicpal input field
 function setFocusOnPrincipal() {
+  getForm.reset();
+  document.querySelector('#rate_val').innerHTML = '10.25%';
+  resetRangeSlider();
   document.querySelector('#principal').focus();
 }
