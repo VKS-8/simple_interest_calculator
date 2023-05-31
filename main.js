@@ -20,7 +20,7 @@ submitBtn.addEventListener('click', compute);
 // console.log(submitBtn);
 
 // Prevent default on form
-getForm.addEventListener('submit', (e) => {
+getForm.addEventListener('input', (e) => {
     e.preventDefault();
 })
 
@@ -44,7 +44,7 @@ function compute() {
     const years = document.getElementById('years').value;
     // console.log('Var years: ' + years);
 
-    validation();     
+    validation(principal);     
     console.log('validation() ran');
     
     let interest = principal * years * rate /100;
@@ -66,36 +66,45 @@ function compute() {
     setTimeout(() => resetRangeSlider(), 5000);
 }
  
-// Validate input
-function validation() {
-    console.log('validation() entry');
-    let principalInput = document.getElementById('principal');      
-    // Solution sourced for this Free Code Camp blog article:
-    // https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
-    // and repurposed to meet current code needs
-    principalInput.addEventListener('input', () => {
-        console.log('validation() handler entry');
+// // Validate input
+// function validation() {
+//     console.log('validation() entry');
+//     let principalInput = document.getElementById('principal');      
+//     // Solution sourced for this Free Code Camp blog article:
+//     // https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
+//     // and repurposed to meet current code needs
+//     principalInput.addEventListener('input', () => {
+//         console.log('validation() handler entry');
        
-        // Clear all previous messages
-        principalInput.setCustomValidity('');
-        console.log('resets customValidity to empty');
-        // Check validity of input field for principal
-        principalInput.checkValidity();
-        console.log(principalInput.checkValidity());
-        console.log('checkValidity() ran'); 
-    });
+//         // Clear all previous messages
+//         principalInput.setCustomValidity('');
+//         console.log('resets customValidity to empty');
+//         // Check validity of input field for principal
+//         principalInput.checkValidity();
+//         console.log(principalInput.checkValidity());
+//         console.log('checkValidity() ran'); 
+//     });
 
-    // Listen for validity of principal input field
-    // Run alert if invalid
-    // Prevent default form submission
-    console.log('Invalid Check entry');
-    principalInput.addEventListener('invalid', (e) => {
-        e.preventDefault();
-                console.log('invalid') 
-                setTimeout(principalInput.setCustomValidity(alert('Enter a positive number.')));
-                console.log('validity alert ran');
-        });
-        console.log('Invalid Check ran');   
+//     // Listen for validity of principal input field
+//     // Run alert if invalid
+//     // Prevent default form submission
+//     console.log('Invalid Check entry');
+//     principalInput.addEventListener('invalid', (e) => {
+//         e.preventDefault();
+//                 console.log('invalid') 
+//                 setTimeout(principalInput.setCustomValidity(alert('Enter a positive number.')));
+//                 console.log('validity alert ran');
+//         });
+//         console.log('Invalid Check ran');   
+// }
+
+function validation(principal) {
+    if (principal == '' || principal <= 0 ) {
+    alert('Enter a positive number');
+    return false;
+    } 
+    
+    return true; 
 }
 
 // Display results
