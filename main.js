@@ -46,7 +46,7 @@ function compute() {
 
     validation();     
     console.log('validation() ran');
-
+    
     let interest = principal * years * rate /100;
         document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
         // console.log('Var interest: ' + interest);
@@ -72,13 +72,13 @@ function validation() {
     let principalInput = document.getElementById('principal');      
     // Solution sourced for this Free Code Camp blog article:
     // https://www.freecodecamp.org/news/form-validation-with-html5-and-javascript/
-    // and repurposed to meet current coding needs
-    principalInput.addEventListener('submit', () => {
+    // and repurposed to meet current code needs
+    principalInput.addEventListener('input', () => {
         console.log('validation() handler entry');
        
         // Clear all previous messages
         principalInput.setCustomValidity('');
-        // console.log('resets customValidity to empty');
+        console.log('resets customValidity to empty');
         // Check validity of input field for principal
         principalInput.checkValidity();
         console.log(principalInput.checkValidity());
@@ -89,13 +89,12 @@ function validation() {
     // Run alert if invalid
     // Prevent default form submission
     console.log('Invalid Check entry');
-    principalInput.addEventListener('invalid', () => {
-                if (principalInput === '') {
+    principalInput.addEventListener('invalid', (e) => {
+        e.preventDefault();
                 console.log('invalid') 
-                principalInput.setCustomValidity(alert('Enter a positive number.'));
+                setTimeout(principalInput.setCustomValidity(alert('Enter a positive number.')));
                 console.log('validity alert ran');
-            }
-        }),
+        });
         console.log('Invalid Check ran');   
 }
 

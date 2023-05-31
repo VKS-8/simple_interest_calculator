@@ -163,7 +163,7 @@ mark {
     https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
 */
 /* This is our style for the invalid fields */
-input:invalid {
+ input:invalid {
     border-color: #900;
     background-color: #fdd;
   }
@@ -187,4 +187,9 @@ input:invalid {
   
   .error.active {
     padding: 0.3em;
+  }
+  
+  input:valid {
+    background: #fff;
+    border-color: black;
   }

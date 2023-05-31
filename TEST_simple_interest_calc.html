@@ -10,7 +10,7 @@
     <body>
       <div class="maindiv">
         <h1>Simple Interest Calculator</h1>
-        <form name="form" id="form">
+        <form action="_target" method="post" name="form" id="form">
           <fieldset id="formGroup1">
             <legend>
               Simple Interest Calculator
@@ -22,15 +22,14 @@
               </label> 
               <input type="number" 
                 name="principal"  
-                type = "submit";
                 id="principal" 
                 class="resultStr"  
                 min="1" 
                 max="1000000000" 
                 step="1" 
-                value="100" 
+                placeholder="required  " 
                 required>
-              <span class="error" aria-live="polite">
+              <!-- <span class="error" aria-live="polite"> -->
               </span>  
             </div>
         
