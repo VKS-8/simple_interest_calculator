@@ -111,7 +111,7 @@ function validation(principal) {
     return false;
     }
     isValid = true;
-    return true; 
+    return true;
 }
 
 // Display results
