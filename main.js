@@ -1,92 +1,89 @@
-const getForm = document.querySelector('#form'); 
-let result = document.querySelector('#result');
-// When outside the main(), it will display the result but with interest
-// undefined.
-// When inside the main(), it console logs correct interest value but
-// won't display the result text
-getForm.addEventListener('submit', onSubmit);
+// Get input values from HTML
+const getForm = document.querySelector('#form');
+const inputField = document.querySelector('input');
+const submitBtn = document.querySelector('#btn');
 
-function main() {
-    compute();
-    onSubmit(e);
-    // getForm.addEventListener('submit', onSubmit);
-}
+let displayResults = document.querySelector('#result');
 
-// Computes the interest, changes the value in the 'Interest' output field
-function compute()
-{
-    const principal = document.getElementById('principal').value;
-    console.log('cPrincipal ' + principal);
-    const rate = document.getElementById('rate').value;
-    console.log('cRate ' + rate);
-    const years = document.getElementById('years').value;
-    console.log('cYears ' + years);
-     
-    let interest = principal * years * rate /100;
-        document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
-        console.log('Interest ' + interest.toFixed(2));
-    
-}
+// Declare variable to set the results to for displayResults.innerHTML
+let resultStr;
+
+// Declare variable and set to 'true' to stop compute()
+// from displaying results principal input is invalid
+let isValid = true;
+
+// Submit form inputs
+submitBtn.addEventListener('click', compute);
+
+// Prevent default form submission
+getForm.addEventListener('input', (e) => {
+ e.preventDefault();
+})
 
 // Gets new value from the range slider and updates the number in the #rate_val span,
-// underscore in front of _rate_val because it isn't read
-function updateRate(_rate_val) {
-    let rateVal = document.getElementById('rate').value; 
-    document.getElementById('rate_val').innerHTML = `${rateVal}%`;
-}
-
-function onSubmit(e) {
-    console.log("onSubmit entry ");
-    e.preventDefault();
-    console.log("preventDefault");
-    // Should produce a popup window but currently isn't doing this
-    if (principal === '') {
-        alert("Please enter an amount.");
-    }
-
-    result.innerHTML = resultStr();
-    console.log("result.innerHTML")
-    setTimeout(() => result.innerHTML = '', 5000);
-    console.log("setTimeout");
-}
-
-function resultStr() {
-    console.log("principal " + principal.value);
-    console.log("interest rate " + rate.value);
-    console.log("interest " + interest.value);
-    console.log("years " + years.value);
-    return(`If you deposit $<span class="resultStr"><mark>${principal.value}</mark></span> \<br\>
-      at an interest rate of <span class="resultStr"><mark>${rate.value}%</mark></span>, \<br\>
-        you will receive an amount of $<span class="resultStr"><mark>${interest.value}</mark></span> \<br\>
-       in the year <span class="resultStr"><mark>${years.value}</mark></span>. \<b\>`);
-       
-}
-
-// getPrincipal.addEventListener('blur', check);
-
-// const getMessage = document.querySelector('.msg');
-
-// const checkCompletion = () => {
-//     if (principal.value !=='' &&
-//     rate_val.value !=='' &&
-//     rate.value !=='' &&
-//     year.value !=='') {
-
-//     const resultStr = 
-//     `If you deposit $<span><mark>${principal.value}</mark></span> \<br\>
-//     at an interest rate of <span><mark>${rate_val.value}%</mark></span>, \<br\>
-//     you will receive an amount of $<span><mark>${rate.value}</mark></span> \<br\>
-//     in the year <span><mark>${year.value}</mark></span> \<b\>`;
+function updateRate() {
     
-//     document.querySelector('result').innerHTML= resultStr;
+ let rateVal = document.getElementById('rate').value; 
+ 
+ document.getElementById('rate_val').innerHTML= `${rateVal}%`;
+}
+
+// Computes the interest 
+function compute() {   
     
-//     // Listens for the 'computer interest' button to be clicked then runs the compute function
-//     }
+ const principal = document.getElementById('principal').value;
+ const rate = document.getElementById('rate').value;
+ const years = document.getElementById('years').value;
 
-//     principal.addEventListener('change', checkCompletion, false);
-//     rate_val.addEventListener('change', checkCompletion, false);
-//     principal.addEventListener('change', checkCompletion, false);
-//     principal.addEventListener('change', checkCompletion, false);
-// }
+ validation(principal);     
 
-// let year = new Date().getFullYear()+parseInt(years);
+ if (!isValid) {
+  return;
+ }
+ 
+ let interest = principal * years * rate /100;
+  
+ document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
+
+ let year = new Date().getFullYear() + parseInt(years);
+     
+ resultStr = 
+  `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
+  at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
+  you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
+  in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>`;  
+ 
+ results();
+ 
+ // Resets the form and range slider
+ setTimeout(() => getForm.reset(), 5000);
+ setTimeout(() => resetRangeSlider(), 5000);
+}
+
+function validation(principal) {
+ if (principal == '' || principal <=0 ) {
+ alert('Enter a positive number');
+  isValid = false;
+  return false;
+ }
+  isValid = true;
+  return true;
+}
+
+// Display results
+function results() {
+ // Set results to display in #result span
+ displayResults.innerHTML = resultStr;
+
+ // Reset #result span to empty after 5 secs
+ setTimeout(() => displayResults.innerHTML = '', 5000);
+
+ // Reset range slider text value to original value
+ setTimeout(() => document.querySelector('#rate_val').innerHTML = '10.25%', 5000);
+}
+// Reset range slider to original position
+function resetRangeSlider() {
+ document.querySelector('#btn').addEventListener('click', ()=> {
+ setTimeout(() => document.querySelector('#rate').value = 10.25, 5000);
+ });
+}

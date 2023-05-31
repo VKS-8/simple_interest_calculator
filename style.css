@@ -57,17 +57,6 @@ mark {
     color: black;
 }
 
-/* #interest span {
-    display: inline-block;
-    width: 15%;
-    margin: 0;
-    padding-left: 0.5rem ;
-    text-align: start;
-    
-    border: px solid purple;
-} */
-
-
 /*-----------------------IDs---in alphabetical order------------------------------*/
 
 #btn {
@@ -80,15 +69,6 @@ mark {
     background-color: rgb(183, 182, 182);
     font-weight: 600;
 }
-
-/* #interest {
-    display: inline-block;
-    width: 15ch;
-    margin-top: 0.5rem;
-    text-align: end;
-    padding: 0 0.5rem;
-    
-} */
 
 #invisible {
     display: none;
