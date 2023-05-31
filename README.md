@@ -19,5 +19,5 @@ Create a simple interest calculator that does the following:
 
 My deviations from requirements:
 
-1.  Changed background color of principal input field to light red with red border;
+1.  Changed background color of principal input field to light red with red border while invalid;
     added a "required  " placeholder to focus user on entering a valid value
