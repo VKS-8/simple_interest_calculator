@@ -15,6 +15,8 @@ let displayResults = document.querySelector('#result');
 let resultStr;
 //  console.log('Var resultStr: ' + resultStr);
 
+let isValid = true;
+
 // Submit form event
 submitBtn.addEventListener('click', compute);
 // console.log(submitBtn);
@@ -46,6 +48,10 @@ function compute() {
 
     validation(principal);     
     console.log('validation() ran');
+
+    if (!isValid) {
+        return;
+    }
     
     let interest = principal * years * rate /100;
         document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
@@ -99,11 +105,12 @@ function compute() {
 // }
 
 function validation(principal) {
-    if (principal == '' || principal <= 0 ) {
+    if (principal == '' || principal <=0 ) {
     alert('Enter a positive number');
+    isValid = false;
     return false;
-    } 
-    
+    }
+    isValid = true;
     return true; 
 }
 
