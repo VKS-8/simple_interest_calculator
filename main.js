@@ -9,7 +9,7 @@ let displayResults = document.querySelector('#result');
 let resultStr;
 
 // Declare variable and set to 'true' to stop compute()
-// from displaying results principal input is invalid
+// from displaying results if principal input is invalid
 let isValid = true;
 
 // Set initial form focus on principal input field
@@ -54,7 +54,7 @@ function compute() {
  // Display interest earned to two decimal points
  document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
 
- // Get year this interest will be fully realized in
+ // Get year in which this interest will be fully realized
  let year = new Date().getFullYear() + parseInt(years);
     
  // Set results to resultStr
@@ -67,7 +67,7 @@ function compute() {
 // Run results function to dispaly results in app
  results();
  
- // Resets the form inputs and range slider
+ // Resets the form inputs, range slider, and focus
  setTimeout(() => getForm.reset(), 5000);
  setTimeout(() => resetRangeSlider(), 5000);
  setFocusOnPrincipal();
