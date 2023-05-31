@@ -57,7 +57,7 @@ mark {
     color: black;
 }
 
-span {
+/* #interest span {
     display: inline-block;
     width: 15%;
     margin: 0;
@@ -65,7 +65,7 @@ span {
     text-align: start;
     
     border: px solid purple;
-}
+} */
 
 
 /*-----------------------IDs---in alphabetical order------------------------------*/
@@ -81,13 +81,17 @@ span {
     font-weight: 600;
 }
 
-#interest {
+/* #interest {
     display: inline-block;
     width: 15ch;
     margin-top: 0.5rem;
     text-align: end;
     padding: 0 0.5rem;
     
+} */
+
+#invisible {
+    display: none;
 }
 
 #principal, #rate, #years{
@@ -140,7 +144,7 @@ span {
 .maindiv {
     background-color: white;
     color: black;
-    width: 500px;
+    width: 500px; /* 500px matches the image; 300 px does not */
     height: 50%;
     padding: 20px;
     border-radius: 25px;
@@ -152,3 +156,40 @@ span {
     padding: 0;
     margin: 0;
 }
+
+/*-----------------------FORM validation------------------------------*/
+
+/*  This code sourced from MDN web docs:
+    https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+*/
+/* This is our style for the invalid fields */
+ input:invalid {
+    border-color: #900;
+    background-color: #fdd;
+  }
+  
+  input:focus:invalid {
+    outline: none;
+  }
+  
+  /* This is the style of our error messages */
+  .error {
+    width: 100%;
+    padding: 0;
+  
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+  
+    box-sizing: border-box;
+  }
+  
+  .error.active {
+    padding: 0.3em;
+  }
+  
+  input:valid {
+    background: #fff;
+    border-color: black;
+  }
