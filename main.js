@@ -12,6 +12,9 @@ let resultStr;
 // from displaying results principal input is invalid
 let isValid = true;
 
+// Set initial form focus on principal input field
+setFocusOnPrincipal();
+
 // Submit form inputs
 submitBtn.addEventListener('click', compute);
 
@@ -35,31 +38,42 @@ function compute() {
  const rate = document.getElementById('rate').value;
  const years = document.getElementById('years').value;
 
+ // Validate principal input field
  validation(principal);     
 
+ // Quit compute if principal input field is invalid;
+ // Set focus back to principal input field
  if (!isValid) {
+  setFocusOnPrincipal();
   return;
  }
  
+ // Calculate interest earned
  let interest = principal * years * rate /100;
-  
+
+ // Display interest earned to two decimal points
  document.getElementById('interest').innerHTML = '$'+interest.toFixed(2);
 
+ // Get year this interest will be fully realized in
  let year = new Date().getFullYear() + parseInt(years);
-     
+    
+ // Set results to resultStr
  resultStr = 
   `If you deposit $<span class="resultStr"><mark>${principal}</mark></span> \<br\>
   at an interest rate of <span class="resultStr"><mark>${rate}%</mark></span>, \<br\>
   you will receive an amount of $<span class="resultStr"><mark>${interest.toFixed(2)}</mark></span> \<br\>
   in the year <span class="resultStr"><mark>${year}</mark></span>. \<b\>`;  
  
+// Run results function to dispaly results in app
  results();
  
- // Resets the form and range slider
+ // Resets the form inputs and range slider
  setTimeout(() => getForm.reset(), 5000);
  setTimeout(() => resetRangeSlider(), 5000);
+ setFocusOnPrincipal();
 }
 
+// Validate principal input; stops submit if invalid
 function validation(principal) {
  if (principal == '' || principal <=0 ) {
  alert('Enter a positive number');
@@ -86,4 +100,9 @@ function resetRangeSlider() {
  document.querySelector('#btn').addEventListener('click', ()=> {
  setTimeout(() => document.querySelector('#rate').value = 10.25, 5000);
  });
+}
+
+// Set focus on prinicpal input field
+function setFocusOnPrincipal() {
+  document.querySelector('#principal').focus();
 }
