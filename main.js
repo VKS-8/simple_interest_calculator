@@ -66,11 +66,7 @@ function compute() {
  
 // Run results function to dispaly results in app
  results();
- 
- // Resets the form inputs, range slider, and focus
- setTimeout(() => getForm.reset(), 5000);
- setTimeout(() => resetRangeSlider(), 5000);
- setFocusOnPrincipal();
+
 }
 
 // Validate principal input; stops submit if invalid
@@ -92,8 +88,9 @@ function results() {
  // Reset #result span to empty after 5 secs
  setTimeout(() => displayResults.innerHTML = '', 5000);
 
- // Reset range slider text value to original value
- setTimeout(() => document.querySelector('#rate_val').innerHTML = '10.25%', 5000);
+ // Reset form with focus on principal input after 5 secs
+ setTimeout(() => setFocusOnPrincipal(), 5000);
+
 }
 
 // Reset range slider to original position
@@ -103,7 +100,7 @@ function resetRangeSlider() {
  });
 }
 
-// Set focus on prinicpal input field
+// Reset form with focus on prinicpal input field
 function setFocusOnPrincipal() {
   getForm.reset();
   document.querySelector('#rate_val').innerHTML = '10.25%';
