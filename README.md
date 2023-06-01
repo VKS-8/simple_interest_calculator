@@ -14,8 +14,8 @@ Create a simple interest calculator that does the following:
 6. When the 'Compute Interest' button is clicked after meeting validation requirements, 
    the form should display the results with the user's inputs, 
    interest earned based on user inputs, and year this interested earned is realized
-7. The form should reset to original on page load design
-8. Focus should be on principal input field
+7. The form should reset to the original on-page-load design
+8. Focus should be on principal input field after reset
 
 My deviations from requirements:
 
